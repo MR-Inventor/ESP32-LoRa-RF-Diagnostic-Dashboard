@@ -8,31 +8,23 @@ ESP32 LoRa RF Diagnostic Dashboard is a wireless RF monitoring and packet transm
 - Ra-02 SX1278 LoRa Module
 - ST7735 1.8" TFT Display
 
-The system continuously transmits LoRa packets and displays real-time RF information on the TFT screen such as:
-
-- Transmission Status
-- Packet Counter
-- Frequency
-- TX Power
-- Spreading Factor
-- System Uptime
-- Animated RF Signal Bars
+The project continuously transmits LoRa packets and displays real-time RF information such as transmission status, packet count, frequency, uptime, and RF activity on the TFT display.
 
 This project demonstrates:
 
 - Embedded Systems
 - SPI Communication
-- Wireless Communication Basics
-- TFT Graphics Programming
-- LoRa RF Transmission
+- LoRa Wireless Transmission
+- TFT Graphics Interface
+- ESP32 Programming
 
 ---
 
 # Components Required
 
-- ESP32 Dev Board
-- Ra-02 SX1278 LoRa Module (433MHz)
-- ST7735 1.8" TFT LCD Display
+- ESP32 Development Board
+- Ra-02 SX1278 LoRa Module
+- ST7735 1.8" TFT Display
 - Jumper Wires
 - USB Cable
 
@@ -40,66 +32,71 @@ This project demonstrates:
 
 # Circuit Connections
 
-## ST7735 TFT Display → ESP32
+Connect the LoRa RA-02 module and TFT display to the ESP32 using SPI communication.
+
+## LoRa RA-02 Connections
+
+| LoRa RA-02 Pin | ESP32 Pin |
+|----------------|------------|
+| 3.3V | 3V3 |
+| GND | GND |
+| SCK | GPIO 18 |
+| MISO | GPIO 19 |
+| MOSI | GPIO 23 |
+| NSS / CS | GPIO 5 |
+| RST | GPIO 14 |
+| DIO0 | GPIO 2 |
+
+---
+
+## ST7735 TFT Display Connections
 
 | TFT Pin | ESP32 Pin |
 |----------|------------|
-| VCC | 3.3V |
+| VCC | 3V3 |
 | GND | GND |
-| SCK | GPIO18 |
-| SDA (MOSI) | GPIO23 |
-| RES | GPIO4 |
-| DC (A0) | GPIO22 |
-| CS | GPIO21 |
-| LED | 3.3V |
+| SCL / SCK | GPIO 18 |
+| SDA / MOSI | GPIO 23 |
+| RES | GPIO 4 |
+| A0 / DC | GPIO 22 |
+| CS | GPIO 15 |
+| LED | 3V3 |
 
 ---
 
-## Ra-02 SX1278 LoRa Module → ESP32
+# SPI Communication
 
-| Ra-02 Pin | ESP32 Pin |
-|------------|------------|
-| VCC | 3.3V |
-| GND | GND |
-| SCK | GPIO18 |
-| MISO | GPIO19 |
-| MOSI | GPIO23 |
-| NSS (CS) | GPIO5 |
-| RST | GPIO14 |
-| DIO0 | GPIO2 |
+Both the LoRa module and TFT display share the same SPI bus:
 
----
+| SPI Signal | ESP32 Pin |
+|-------------|------------|
+| SCK | GPIO 18 |
+| MOSI | GPIO 23 |
+| MISO | GPIO 19 |
 
-# Important Notes
-
-- All modules operate on 3.3V logic.
-- Do NOT connect LoRa module to 5V.
-- SPI pins are shared between TFT and LoRa.
-- TFT and LoRa use different CS pins.
-- Disconnect DIO0 (GPIO2) while uploading code if upload issues occur.
-- GPIO21 is used for TFT CS to avoid ESP32 boot problems.
+Separate CS (Chip Select) pins are used for proper SPI communication.
 
 ---
 
 # Features
 
 - Real-time LoRa packet transmission
-- TFT graphical RF dashboard
+- TFT graphical dashboard
 - Packet transmission counter
-- RF configuration display
-- Animated signal strength bars
-- Live uptime monitoring
+- RF status monitoring
+- Animated signal bars
+- System uptime display
 - Embedded graphical interface
 
 ---
 
 # Working Principle
 
-1. ESP32 initializes the ST7735 TFT display.
-2. Ra-02 LoRa module starts at 433MHz frequency.
+1. ESP32 initializes the TFT display.
+2. The Ra-02 LoRa module starts at 433MHz frequency.
 3. ESP32 continuously transmits LoRa packets.
-4. TFT dashboard updates in real time.
-5. Packet count and RF parameters are displayed dynamically.
+4. The TFT display updates the RF dashboard in real time.
+5. Packet count and transmission details are displayed dynamically.
 
 ---
 
@@ -112,7 +109,7 @@ This project demonstrates:
 
 # Required Libraries
 
-Install the following libraries from Arduino Library Manager:
+Install the following libraries using Arduino Library Manager:
 
 - LoRa
 - Adafruit GFX Library
@@ -127,17 +124,15 @@ The TFT display shows:
 - LoRa RF Status
 - Packet Counter
 - Frequency Information
-- TX Power
-- Spreading Factor
 - Uptime
-- Animated Signal Bars
+- RF Signal Activity
 
 ---
 
 # Applications
 
-- Wireless Communication Demonstration
-- IoT Projects
+- Wireless Communication Systems
+- IoT Demonstration Projects
 - RF Monitoring Systems
 - Embedded Systems Learning
 - LoRa Communication Testing
@@ -150,7 +145,7 @@ The TFT display shows:
 - Add LoRa Receiver Node
 - Two-way Wireless Communication
 - Sensor Data Transmission
-- GPS Tracking System
+- GPS Tracking
 - IoT Cloud Integration
 - Remote Monitoring Applications
 
@@ -164,4 +159,4 @@ Digvijay
 
 # License
 
-This project is created for educational and learning purposes.
+This project is developed for educational and learning purposes.
