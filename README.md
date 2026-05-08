@@ -128,7 +128,10 @@ The TFT display shows:
 - RF Signal Activity
 
 ---
+# Connection in Paragraph 
+Connect the LoRa RA-02 module and TFT display to the ESP32 using SPI communication. For the LoRa module, connect the 3.3V pin to the ESP32 3V3 pin and GND to GND. Connect SCK to GPIO 18, MISO to GPIO 19, MOSI to GPIO 23, NSS/CS to GPIO 5, RST to GPIO 14, and DIO0 to GPIO 2. For the TFT display, connect VCC to 3V3 and GND to GND. Connect the SCL/SCK pin to GPIO 18 and SDA/MOSI to GPIO 23 since both devices share the same SPI bus. Connect the RES pin to GPIO 4, the A0/DC pin to GPIO 22, the CS pin to GPIO 15, and the LED pin to 3V3 for display backlight power. 
 
+---
 # Applications
 
 - Wireless Communication Systems
